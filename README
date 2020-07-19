@@ -1,0 +1,30 @@
+analysis framework builder for use in typical HEP analyses
+
+requirements
+- C++17 compiler: development and testing are done with gcc 8.3.1
+- ROOT: no explicit requirement, but development and testing are done with ROOT 6.18.04
+- for CMS members, the environment provided by CMSSW_11_0_X and newer fulfills the requirements
+- the framework itself is independent of CMSSW however
+
+quickstart
+- check the exec/example_gen_ttbar.cc annotated example file
+
+notes
+- only flat ROOT trees are supported, where flat means the branches are either simple types e.g. ints, floats, bools or arrays of those
+- the core part of the framework is only a set of headers to be compiled together with user's execution macro
+- the execution macro is a set of instructions provided by the user according to their analysis needs, which also doubles as the configuration
+
+directories
+- src: the core part of the framework
+- exec: contains an annotated execution macro to illustrate the use of the framework, plus others the author is working on
+- plugins: additional header files that are not considered as part of framework core, but can be convenient for more complex macros
+
+planned improvements
+- plugin for prescaled triggers
+- plotting and other histogram manipulation plugin
+- datacard plugin for use with Higgs combine tool
+- support for output trees and other formats e.g. json, csv
+
+feedback and/or bug report are welcome
+updated	19/07/2020
+
