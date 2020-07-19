@@ -102,7 +102,7 @@ bool Framework::Aggregate<N, Ts...>::add_attribute(const std::string &attr, Func
                                   Traits{}, std::make_index_sequence<Traits::arity>{} );
   const std::array<std::array<int, 2>, sizeof...(attrs)> grp_inq = f_bump_duplicate(attrs...);
 
-  // grps and grpinq must be captured by value, since they die outside add_attribute scope
+  // grps and grp_inq must be captured by value, since they die outside add_attribute scope
   auto f_apply = [f_calculate, this, iattr = this->v_data.size(), grps, grp_inq] (Attributes &&...attrs) -> void {
     static std::array<int, sizeof...(attrs)> attr_idx;
     for (int iE = 0; iE < this->counter; ++iE) {
