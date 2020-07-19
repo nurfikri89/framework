@@ -3,7 +3,7 @@
 
 // -*- C++ -*-
 // author: afiq anuar
-// short: aggregate of collections, with attributes that are transformations of collection attributes
+// short: aggregate of groups, with arbitrary indexing rule and attributes that are transformations of groups attributes
 
 #include "Group.h"
 

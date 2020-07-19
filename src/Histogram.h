@@ -1,6 +1,6 @@
 // -*- C++ -*-
 // author: afiq anuar
-// short: an interface for creating, filling and saving of histograms from Groups
+// short: an interface for creating, filling and saving of histograms from groups
 
 #ifndef FWK_ANALYSIS_H
 #define FWK_ANALYSIS_H

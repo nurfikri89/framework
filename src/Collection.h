@@ -3,7 +3,7 @@
 
 // -*- C++ -*-
 // author: afiq anuar
-// short: collection of objects i.e. sets of attributes e.g. a particle has pt eta phi...
+// short: collections are groups whose input come from ROOT files - ie it is the group-dataset interface
 
 #include "Group.h"
 #include "Dataset.h"

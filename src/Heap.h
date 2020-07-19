@@ -3,7 +3,7 @@
 
 // -*- C++ -*-
 // author: afiq anuar
-// short: collection of tools that are needed by Group hierarchy
+// short: collection of tools that are needed by group and friends
 
 #include <string>
 
@@ -22,7 +22,6 @@
 #include <functional>
 #include <stdexcept>
 
-// a few global things that will be needed by Heap and friends
 // credit https://stackoverflow.com/questions/34099597/check-if-a-type-is-passed-in-variadic-template-parameter-pack
 template<typename T, typename... Ts>
 constexpr bool contained_in = std::disjunction_v<std::is_same<T, Ts>...>;

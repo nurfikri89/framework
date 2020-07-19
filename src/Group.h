@@ -8,7 +8,6 @@
 // note: can't be handled by iterate(); for this one needs to use operator()
 
 #include "Heap.h"
-#include <mutex>
 
 // https://stackoverflow.com/questions/670308/alternative-to-vectorbool
 class boolean {
