@@ -24,7 +24,7 @@ planned improvements
 - plotting and other histogram manipulation plugin
 - datacard plugin for use with Higgs combine tool
 - support for output trees and other formats e.g. json, csv
+- interface for keeping track of group summary statistics
 
 feedback and/or bug report are welcome
-updated	19/07/2020
 
