@@ -10,10 +10,10 @@
 
 template <typename Number = float>
 const std::vector<std::pair<std::string, Number>>& 
-compute_spin_correlation(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-                         const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-                         const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-                         const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+compute_spin_correlation(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+                         Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+                         Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+                         Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   static std::vector<std::pair<std::string, Number>> m_spin_corr;
   static int initialize = 0;
@@ -525,10 +525,10 @@ compute_spin_correlation(const Number &pTop_pt, const Number &pTop_eta, const Nu
 
 
 template <typename Number = float>
-Number cLab(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cLab(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -542,10 +542,10 @@ Number cLab(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number b1k(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b1k(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -559,10 +559,10 @@ Number b1k(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b2k(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b2k(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -576,10 +576,10 @@ Number b2k(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b1r(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b1r(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -593,10 +593,10 @@ Number b1r(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b2r(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b2r(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -610,10 +610,10 @@ Number b2r(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b1n(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b1n(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -627,10 +627,10 @@ Number b1n(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b2n(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b2n(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -644,10 +644,10 @@ Number b2n(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b1j(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b1j(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -661,10 +661,10 @@ Number b1j(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b2j(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b2j(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -678,10 +678,10 @@ Number b2j(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b1q(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b1q(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -695,10 +695,10 @@ Number b1q(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number b2q(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number b2q(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -712,10 +712,10 @@ Number b2q(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number ckk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number ckk(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -729,10 +729,10 @@ Number ckk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number crr(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number crr(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -746,10 +746,10 @@ Number crr(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number cnn(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-           const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-           const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-           const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cnn(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+           Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+           Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+           Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -763,10 +763,10 @@ Number cnn(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi
 
 
 template <typename Number = float>
-Number cPrk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cPrk(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -780,10 +780,10 @@ Number cPrk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cMrk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cMrk(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -797,10 +797,10 @@ Number cMrk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cPnr(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cPnr(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -814,10 +814,10 @@ Number cPnr(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cMnr(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cMnr(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -831,10 +831,10 @@ Number cMnr(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cPnk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cPnk(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -848,10 +848,10 @@ Number cPnk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cMnk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cMnk(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -865,10 +865,10 @@ Number cMnk(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cHel(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cHel(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -882,10 +882,10 @@ Number cHel(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cHan(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cHan(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -899,10 +899,10 @@ Number cHan(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cSca(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cSca(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -916,10 +916,10 @@ Number cSca(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cTra(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cTra(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -933,10 +933,10 @@ Number cTra(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number crkP(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number crkP(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -950,10 +950,10 @@ Number crkP(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number crkM(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number crkM(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -967,10 +967,10 @@ Number crkM(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cnrP(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cnrP(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -984,10 +984,10 @@ Number cnrP(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cnrM(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cnrM(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -1001,10 +1001,10 @@ Number cnrM(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cnkP(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cnkP(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -1018,10 +1018,10 @@ Number cnkP(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-Number cnkM(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number cnkM(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -1036,10 +1036,10 @@ Number cnkM(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_ph
 
 
 template <typename Number = float>
-const Number &phi0(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number phi0(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,
@@ -1053,10 +1053,10 @@ const Number &phi0(const Number &pTop_pt, const Number &pTop_eta, const Number &
 
 
 template <typename Number = float>
-const Number &phi1(const Number &pTop_pt, const Number &pTop_eta, const Number &pTop_phi, const Number &pTop_m,
-            const Number &aTop_pt, const Number &aTop_eta, const Number &aTop_phi, const Number &aTop_m,
-            const Number &pLep_pt, const Number &pLep_eta, const Number &pLep_phi, const Number &pLep_m,
-            const Number &aLep_pt, const Number &aLep_eta, const Number &aLep_phi, const Number &aLep_m)
+Number phi1(Number pTop_pt, Number pTop_eta, Number pTop_phi, Number pTop_m,
+            Number aTop_pt, Number aTop_eta, Number aTop_phi, Number aTop_m,
+            Number pLep_pt, Number pLep_eta, Number pLep_phi, Number pLep_m,
+            Number aLep_pt, Number aLep_eta, Number aLep_phi, Number aLep_m)
 {
   const auto &map = compute_spin_correlation(pTop_pt, pTop_eta, pTop_phi, pTop_m,
                                              aTop_pt, aTop_eta, aTop_phi, aTop_m,

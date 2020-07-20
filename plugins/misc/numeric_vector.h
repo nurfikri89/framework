@@ -11,7 +11,7 @@
 
 /// poor man's std::hypot (tested with g++/clang++, fine for double: 1e-158 < i < 1e10)
 template <typename Number = float>
-Number quadratic_sum(const Number &num1, const Number &num2)
+Number quadratic_sum(Number num1, Number num2)
 {
   return std::sqrt((num1 * num1) + (num2 * num2));
 }
@@ -19,7 +19,7 @@ Number quadratic_sum(const Number &num1, const Number &num2)
 
 
 template <typename Number = float>
-Number absolute_difference(const Number &num1, const Number &num2)
+Number absolute_difference(Number num1, Number num2)
 {
   return std::abs(num1 - num2);
 }
@@ -31,7 +31,7 @@ Number absolute_difference(const Number &num1, const Number &num2)
 /// but somehow both g++ and clang optimizes it away (even without -O)
 /// in cases when deta (using absolute_difference) and dphi are both within an Aggregate
 template <typename Number = float>
-Number dphi(const Number &phi1, const Number &phi2) 
+Number dphi(Number phi1, Number phi2) 
 {
   return std::acos( std::cos(phi1 - phi2) );
 }
@@ -39,7 +39,7 @@ Number dphi(const Number &phi1, const Number &phi2)
 
 
 template <typename Number = float>
-Number dR(const Number &eta1, const Number &phi1, const Number &eta2, const Number &phi2) 
+Number dR(Number eta1, Number phi1, Number eta2, Number phi2) 
 {
   return quadratic_sum(eta1 - eta2, dphi(phi1, phi2));
 }
