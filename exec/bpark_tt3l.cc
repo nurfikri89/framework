@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
     return {{idxe[0], idxu[0], ipdb[0]}};
   };
 
-  Aggregate euu("euu", 18, electron, muon, muon);
+  Aggregate euu("euu", 18, 1, electron, muon, muon);
   euu.set_indexer(f_tt3l_idx);
   euu.add_attribute("e_pt", identity<>, "electron::pt");
   euu.add_attribute("e_eta", identity<>, "electron::eta");

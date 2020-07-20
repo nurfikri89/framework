@@ -123,7 +123,7 @@ int main(int argc, char** argv) {
                                    }, "pdg", "flag", "mother");
 
   // 4 times gen_particle to refer to the top, antitop, lepton, antilepton
-  Aggregate gen_tt2l("gen_tt2l", 8, gen_particle, gen_particle, gen_particle, gen_particle);
+  Aggregate gen_tt2l("gen_tt2l", 8, 1, gen_particle, gen_particle, gen_particle, gen_particle);
   gen_tt2l.set_indexer([] (const auto &g1, const auto &g2, const auto &g3, const auto &g4)
                        -> std::vector<std::array<int, 4>> {
                          auto top = g1.filter_equal("tt2l", 1);
