@@ -1,9 +1,9 @@
+#ifndef FWK_HISTOGRAM_H
+#define FWK_HISTOGRAM_H
+
 // -*- C++ -*-
 // author: afiq anuar
 // short: an interface for creating, filling and saving of histograms from groups
-
-#ifndef FWK_ANALYSIS_H
-#define FWK_ANALYSIS_H
 
 #include "Heap.h"
 

@@ -1,9 +1,9 @@
+#ifndef FWK_FUNCTION_UTIL_H
+#define FWK_FUNCTION_UTIL_H
+
 // -*- C++ -*-
 // author: afiq anuar
 // short: a listing of free convenience functions for use in the framework
-
-#ifndef FWK_FUNCTION_UTIL_H
-#define FWK_FUNCTION_UTIL_H
 
 #include <type_traits>
 

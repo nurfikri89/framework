@@ -1,9 +1,9 @@
+#ifndef FWK_STRING_IO_H
+#define FWK_STRING_IO_H
+
 // -*- C++ -*-
 // author: afiq anuar
 // short: a listing of free functions that contains common string io operations
-
-#ifndef FWK_STRING_IO_H
-#define FWK_STRING_IO_H
 
 #include <iostream>
 #include <sstream>

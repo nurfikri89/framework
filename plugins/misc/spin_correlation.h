@@ -1,9 +1,9 @@
-// -*- C++ -*-
-// author: afiq anuar
-// short: dedicated plugin for computing ttbar spin correlation variables except deta, dphi
-
 #ifndef FWK_SPIN_CORRELATION_H
 #define FWK_SPIN_CORRELATION_H
+
+// -*- C++ -*-
+// author: afiq anuar
+// short: for computing ttbar spin correlation variables except dphi
 
 #include "misc/function_util.h"
 #include "TLorentzVector.h"
