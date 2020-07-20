@@ -9,8 +9,8 @@ tree(nullptr),
 counter_name(""),
 counter_branch(nullptr)
 {
-  this->initialize(1);
   reserve(reserve_);
+  this->initialize(1);
 }
 
 
@@ -22,12 +22,11 @@ tree(nullptr),
 counter_name(counter_name_),
 counter_branch(nullptr)
 {
+  reserve(reserve_);
   if (counter_name != "")
     this->initialize(init);
   else
     this->initialize(1);
-
-  reserve(reserve_);
 }
 
 
