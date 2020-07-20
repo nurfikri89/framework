@@ -4,7 +4,7 @@
 
 template <int N, typename... Ts>
 template <typename ...Groups>
-Framework::Aggregate<N, Ts...>::Aggregate(const std::string &name_, int reserve_,  Groups &...groups) : 
+Framework::Aggregate<N, Ts...>::Aggregate(const std::string &name_, int reserve_, int init, Groups &...groups) : 
 Framework::Group<Ts...>::Group(name_, 1),
 v_group{ std::ref<Group<Ts...>>(groups)... }
 {
@@ -15,8 +15,11 @@ v_group{ std::ref<Group<Ts...>>(groups)... }
   //static_assert((contained_in<typename Groups<Ts...>::data_type, typename Group::data_type> and ...), 
   //              "ERROR: the Aggregate must contain all the types contained by its underlying Groups!!");
 
-  this->initialize(1);
   reserve(reserve_);
+  if (init > 0)
+    this->initialize(init);
+  else
+    this->initialize(1);
 }
 
 

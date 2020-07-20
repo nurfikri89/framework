@@ -15,11 +15,11 @@ namespace Framework {
     /// don't bother, use the one below
     Aggregate() = delete;
 
-    /// give directly the collections that one would be using
+    /// give directly the collections that one will be using
     /// not adding add_collection in order to simplify things a bit
     /// in that one can fix already the signature to cover only all the constructed collections
     template <typename ...Groups>
-    Aggregate(const std::string &name_, int reserve_, Groups &...groups);
+    Aggregate(const std::string &name_, int reserve_, int init, Groups &...groups);
 
     /// provide the indexing function
     /// ie how to go from indices in each group to an index in the aggregate
@@ -77,10 +77,10 @@ namespace Framework {
 
   /// deduction guides for convenience
   template <typename ...Ts, typename ...Groups> 
-  Aggregate(const char *, int, Group<Ts...> &, Groups &...) -> Aggregate<sizeof...(Groups) + 1, Ts...>;
+  Aggregate(const char *, int, int, Group<Ts...> &, Groups &...) -> Aggregate<sizeof...(Groups) + 1, Ts...>;
 
   template <typename ...Ts, typename ...Groups> 
-  Aggregate(const std::string &, int, Group<Ts...> &, Groups &...) -> Aggregate<sizeof...(Groups) + 1, Ts...>;
+  Aggregate(const std::string &, int, int, Group<Ts...> &, Groups &...) -> Aggregate<sizeof...(Groups) + 1, Ts...>;
 }
 
 #include "Aggregate.cc"
