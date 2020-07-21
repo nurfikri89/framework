@@ -6,7 +6,7 @@
 // short: for computing ttbar spin correlation variables except dphi
 
 #include "misc/function_util.h"
-#include "TLorentzVector.h"
+#include "misc/numeric_vector_util.h"
 
 template <typename Number = float>
 const std::vector<std::pair<std::string, Number>>& 
@@ -517,7 +517,7 @@ compute_spin_correlation(Number pTop_pt, Number pTop_eta, Number pTop_phi, Numbe
   const TVector3 t3_pLep = ( b4_pLep.Vect().Unit() - (-1. * m_spin_corr[ib2k].second * kBase) ).Unit();
 
   m_spin_corr[iphi0].second = std::acos(t3_aLep.Dot(t3_pLep));
-  m_spin_corr[iphi1].second = (m_spin_corr[ikNorm].second < 0.) ? (2. * M_PI) - m_spin_corr[iphi0].second : m_spin_corr[iphi0].second;
+  m_spin_corr[iphi1].second = (m_spin_corr[ikNorm].second < 0.) ? (2. * constants::pi<Number>()) - m_spin_corr[iphi0].second : m_spin_corr[iphi0].second;
 
   return m_spin_corr;
 }

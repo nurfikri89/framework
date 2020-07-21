@@ -8,6 +8,9 @@
 #include <numeric>
 #include <cmath>
 #include "TLorentzVector.h"
+#include "boost/math/constants/constants.hpp"
+
+namespace constants = boost::math::constants;
 
 /// poor man's std::hypot (tested with g++/clang++, fine for double: 1e-158 < i < 1e10)
 template <typename Number = float>
@@ -27,9 +30,6 @@ Number absolute_difference(Number num1, Number num2)
 
 
 /// actually abs(dphi)
-/// initially written as acos(cos(phi1 - phi2))
-/// but somehow both g++ and clang optimizes it away (even without -O)
-/// in cases when deta (using absolute_difference) and dphi are both within an Aggregate
 template <typename Number = float>
 Number dphi(Number phi1, Number phi2) 
 {
