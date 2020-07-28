@@ -6,7 +6,7 @@
 // short: for computing ttbar spin correlation variables except dphi
 
 #include "misc/function_util.h"
-#include "misc/numeric_vector_util.h"
+#include "misc/numeric_vector.h"
 
 template <typename Number = float>
 const std::vector<std::pair<std::string, Number>>& 
