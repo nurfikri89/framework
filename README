@@ -24,8 +24,9 @@ planned improvements
 - plugin for prescaled triggers
 - plotting and other histogram manipulation plugin
 - datacard plugin for use with Higgs combine tool
-- support for output trees and other formats e.g. json, csv
+- support for other output formats e.g. json, csv
 - interface for keeping track of group summary statistics
+- concurrency support
 
 feedback and/or bug report are welcome
 

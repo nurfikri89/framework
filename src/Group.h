@@ -4,25 +4,24 @@
 // -*- C++ -*-
 // author: afiq anuar
 // short: group of objects i.e. sets of attributes e.g. a particle has pt eta phi...
-// note: attributes that are self-referencing e.g. GenPart_motherIdx
-// note: can't be handled by iterate(); for this one needs to use operator()
+// note: attributes that are self-referencing e.g. GenPart_motherIdx can't be handled by iterate(); for this one needs to use operator()
 
 #include "Heap.h"
 
 // https://stackoverflow.com/questions/670308/alternative-to-vectorbool
 class boolean {
-public:
-  boolean(): value() {}
-  boolean(bool value_) : value(value_) {}
+ public:
+   boolean(): value() {}
+   boolean(bool value_) : value(value_) {}
 
-  operator bool() const {return value;}
+   operator bool() const {return value;}
 
-  /// the following operators are to allow bool* b = &v[0]; (v is a vector here)
-  bool* operator& () { return &value; }
-  const bool* operator& () const { return &value; }
+   /// the following operators are to allow bool* b = &v[0]; (v is a vector here)
+   bool* operator& () { return &value; }
+   const bool* operator& () const { return &value; }
 
-private:
-  bool value;
+ private:
+   bool value;
 };
 
 namespace Framework {
@@ -45,6 +44,14 @@ namespace Framework {
     /// number of currently held elements
     int n_elements() const;
 
+    /// ref instead of copy of the above
+    const int& ref_to_n_elements() const;
+
+    /// a mutable ref version
+    /// can't be const if it's to be used to write TTree...
+    /// might be worth considering to write TTree using copies rather than in-place references?
+    int& mref_to_n_elements();
+
     /// number of currently held attributes
     int n_attributes() const;
 
@@ -60,25 +67,27 @@ namespace Framework {
     template <typename Function, typename ...Attributes>
     bool transform_attribute(const std::string &attr, Function function, Attributes &&...attrs);
 
-    /// read-only container of attributes
+    /// list of attributes
     std::vector<std::string> attributes() const;
 
-    /// read-only container of elements
+    /// reference to container of elements
     const std::vector<std::variant<std::vector<Ts>...>>& data() const;
 
-    /// read-only single attribute array access
-    /// variant version
+    /// reference to single attribute array - variant version
     const std::variant<std::vector<Ts>...>& operator()(const std::string &name) const;
 
-    /// read-only single attribute array access
-    /// typed version
+    /// mutable version of the above
+    /// only one version provided, intended for use by Tree only
+    std::variant<std::vector<Ts>...>& mref_to_attribute(const std::string &name);
+
+    /// reference to single attribute array - typed version
     template <typename T>
     const std::vector<T>& get(const std::string &name) const;
 
     /// the associated indices to be used with the above
     std::vector<int> indices() const;
 
-    /// the above, but when you don't need to copy
+    /// ref instead of copy of the above
     const std::vector<int>& ref_to_indices() const;
 
     /// and individual index access i.e. v_index[order] with bounds checking
@@ -126,7 +135,7 @@ namespace Framework {
     template <typename Number>
     std::vector<int> filter_bit_and(const std::string &name, Number value) const;
 
-    /// both filters are min and max exclusive
+    /// both are min and max exclusive
     template <typename Number>
     std::vector<int> filter_in(const std::string &name, Number min, Number max) const;
 
@@ -161,7 +170,7 @@ namespace Framework {
     template <typename Number>
     int count_bit_and(const std::string &name, Number value) const;
 
-    /// both filters are min and max exclusive
+    /// both are min and max exclusive
     template <typename Number>
     int count_in(const std::string &name, Number min, Number max) const;
 
@@ -170,7 +179,7 @@ namespace Framework {
 
     /// sort the elements in the collection by a given attribute
     /// custom sorter needs a function returning a bool and taking two args, both of std::pair<int, decltype(data)>
-    /// TODO a convenient implementation
+    /// FIXME prepare a more convenient implementation
     /// returns the sorted indices
     template <typename Compare>
     std::vector<int> sort(Compare compare, const std::string &name) const;

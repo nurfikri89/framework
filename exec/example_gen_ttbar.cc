@@ -7,6 +7,7 @@
 #include "Collection.h"
 #include "Aggregate.h"
 #include "Histogram.h"
+#include "../src/Tree.h"
 
 // additional headers that aid in defining analysis-dependent functions
 #include "TLorentzVector.h"
@@ -518,6 +519,27 @@ int main() {
   hist_cut.make_histogram<TH1F>(filler_first_of(gen_tt_ll_bb, "lbbar_mass"), "lbbar_mass_cut", "", 100, 0.f, 200.f);
   hist_cut.make_histogram<TH1F>(filler_first_of(gen_tt_ll_bb, "lbarb_mass"), "lbarb_mass_cut", "", 100, 0.f, 200.f);
 
+  // if the unbinned values are needed we can save them as flat trees
+  // just like the histogram object we start by instantiating the object
+  // args are the file and tree names we want to save out
+  // optionally also the compression setting
+  Tree tree_gen("gen_smtt_kinematic_cut.root", "tree");
+
+  // two types of branches are supported - single and array
+  // by calling the respective methods as shown below
+  // the args are the group contributing and its attributes that one would like to be saved
+  // gen_ttbar aggregate always have only one element, so it's suitably saved as single branches
+  // the branches are saved with name groupname_attribute
+  tree_gen.make_single_branches(gen_ttbar, "ttbar_mass", "ttbar_pt");
+
+  // use array branches when the group can have more than one element and we are interested in them all
+  // in this case, in addition to the attribute array branches, one also gets the n_groupname branch
+  tree_gen.make_array_branches(gen_particle, "mass", "pt", "eta", "phi", "pdg", "dileptonic_ttbar");
+
+  // to add more branches simply call the make_*_branches again
+  // note: each group can contribute branches to a tree exactly once
+  tree_gen.make_single_branches(gen_tt_ll_bb, "llbar_mass", "bbbar_mass", "lb_mass", "lbarbbar_mass", "lbbar_mass", "lbarb_mass");
+
   // so far we have defined the inputs we would like to read, how to transform them and the form of our analysis output 
   // there is one last piece of preparation we need to do
   // and that is to define how we would like our analysis to be performed
@@ -526,7 +548,7 @@ int main() {
   // the only argument to this function is the entry number
   // the function must be marked mutable, since we will be modifying the captured references
   // one way to think about this function is that it contains the instructions on how to analyze a single event
-  auto f_analyze = [&metadata, &gen_particle, &gen_ttbar, &gen_tt_ll_bb, &hist_no_cut, &hist_cut] (long long entry) mutable {
+  auto f_analyze = [&metadata, &gen_particle, &gen_ttbar, &gen_tt_ll_bb, &hist_no_cut, &hist_cut, &tree_gen] (long long entry) mutable {
     // first we start by populating the collections
     // this is essentially equivalent of the tree->GetEntry(entry)
     // with the (compulsory) freedom of timing the call separately for each group
@@ -570,8 +592,11 @@ int main() {
     gen_particle.update_indices(lepton_bottom_passing_pt_eta_cut);
 
     // if all four objects pass the cut, then gen_particle will have 4 elements left
-    if (gen_particle.n_elements() == 4)
+    // fill also our tree at this point
+    if (gen_particle.n_elements() == 4) {
       hist_cut.fill();
+      tree_gen.fill();
+    }
 
     /*/ here is the way to perform equivalent filtering using the gen_tt_ll_bb aggregate
     // by stacking multiple filter_XXX calls
@@ -601,6 +626,7 @@ int main() {
   // which we can plot, or perform statistical tests etc
   hist_no_cut.save_as("hist_no_cut.root");
   hist_cut.save_as("hist_cut.root");
+  tree_gen.save();
 
   return 0;
 }

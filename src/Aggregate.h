@@ -4,6 +4,12 @@
 // -*- C++ -*-
 // author: afiq anuar
 // short: aggregate of groups, with arbitrary indexing rule and attributes that are transformations of groups attributes
+// todo: something that allows Group<A, B, C> and Group<B, A> to go into the same Aggregate
+// todo: simple conversion operators is not the way to achieve this given the current model
+// todo: std::visit gives the wrong result for variant<A, B> when it's casted to variant<B, A>
+// todo: also wrong when casting variant<A, B> to variant<A, B, C>
+// todo: i.e. there is something in variant implementation that is sensitive to type order
+// todo: this is the case also when using overload visitor with specific types, not just generic lambdas
 
 #include "Group.h"
 

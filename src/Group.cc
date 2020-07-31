@@ -25,6 +25,22 @@ int Framework::Group<Ts...>::n_elements() const
 
 
 template <typename ...Ts>
+const int& Framework::Group<Ts...>::ref_to_n_elements() const
+{
+  return selected;
+}
+
+
+
+template <typename ...Ts>
+int& Framework::Group<Ts...>::mref_to_n_elements()
+{
+  return selected;
+}
+
+
+
+template <typename ...Ts>
 int Framework::Group<Ts...>::n_attributes() const
 {
   return v_attr.size();
@@ -124,6 +140,14 @@ const std::variant<std::vector<Ts>...>& Framework::Group<Ts...>::operator()(cons
     throw std::invalid_argument( "ERROR: Group::get: requested attribute " + name + " is not within the group!!" );
 
   return v_data[iA];
+}
+
+
+
+template <typename ...Ts>
+std::variant<std::vector<Ts>...>& Framework::Group<Ts...>::mref_to_attribute(const std::string &name)
+{
+  return const_cast<std::variant<std::vector<Ts>...>&>( (*const_cast<const Framework::Group<Ts...>*>(this))(name) );
 }
 
 
