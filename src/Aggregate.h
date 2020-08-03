@@ -9,7 +9,8 @@
 // todo: std::visit gives the wrong result for variant<A, B> when it's casted to variant<B, A>
 // todo: also wrong when casting variant<A, B> to variant<A, B, C>
 // todo: i.e. there is something in variant implementation that is sensitive to type order
-// todo: this is the case also when using overload visitor with specific types, not just generic lambdas
+// todo: as for non-template base of Group with virtual functions, the issue is in the need to cast to original type before calling Group::data()
+// todo: and it's not clear how to make Aggregate remember the original types without making it a class member
 
 #include "Group.h"
 

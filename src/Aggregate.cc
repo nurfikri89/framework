@@ -28,9 +28,9 @@ template <int N, typename... Ts>
 template <typename Indexer>
 void Framework::Aggregate<N, Ts...>::set_indexer(Indexer indexer_)
 {
-  auto get_indexer = [indexer_] (const auto &...grps) { return indexer_(grps.get()...); };
-
   if (!indexer) {
+    auto get_indexer = [indexer_] (const auto &...grps) { return indexer_(grps.get()...); };
+
     auto f_index = [this, get_indexer] () -> void {
       v_indices.clear();
       v_indices = std::apply(get_indexer, v_group);
