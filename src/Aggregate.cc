@@ -168,18 +168,14 @@ void Framework::Aggregate<N, Ts...>::populate(long long)
 
   // first run the external attributes
   for (int iD = 0; iD < this->v_data.size(); ++iD) {
-    if (v_flag[iD] == 0)
-      continue;
-
-    this->v_attr[iD].second();
+    if (v_flag[iD] == 1)
+      this->v_attr[iD].second();
   }
 
   // then internals after all externals have been populated
   for (int iD = 0; iD < this->v_data.size(); ++iD) {
-    if (v_flag[iD] == 1)
-      continue;
-
-    this->v_attr[iD].second();
+    if (v_flag[iD] == 0)
+      this->v_attr[iD].second();
   }
 }
 
