@@ -63,3 +63,27 @@ void Framework::Histogram::save_as(const std::string &name) const
   for (auto &hist : v_hist)
     hist.first->Write();
 }
+
+
+
+const std::vector<Framework::Histogram::histfunc>& Framework::Histogram::histograms() const
+{
+  return v_hist;
+}
+
+
+
+template <typename ...Hists>
+void Framework::save_all_as(const std::string &name, const Hists &...hists)
+{
+  using ref_to_vhf = std::reference_wrapper<const std::vector<Framework::Histogram::histfunc>>;
+  std::array<ref_to_vhf, sizeof...(hists)> refs = { std::cref(hists.histograms())... };
+
+  auto file = std::make_unique<TFile>(name.c_str(), "recreate");
+  file->cd();
+
+  for (const auto &ref : refs) {
+    for (const auto &hist: ref.get())
+      hist.first->Write();
+  }
+}

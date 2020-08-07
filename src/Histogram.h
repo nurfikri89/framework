@@ -27,6 +27,8 @@
 namespace Framework {
   class Histogram {
   public:
+    using histfunc = std::pair<std::unique_ptr<TH1>, std::function<void()>>;
+
     /// constructor
     Histogram();
 
@@ -48,6 +50,9 @@ namespace Framework {
     /// save all held histograms into a ROOT file
     void save_as(const std::string &name) const;
 
+    /// provide reference to held histograms
+    const std::vector<histfunc>& histograms() const;
+
   protected:
     /// the weight to be used when filling the histograms
     double weight;
@@ -56,8 +61,11 @@ namespace Framework {
     std::function<double()> weighter;
 
     /// all histograms and its filling function
-    std::vector<std::pair<std::unique_ptr<TH1>, std::function<void()>>> v_hist;
+    std::vector<histfunc> v_hist;
   };
+
+  template <typename ...Hists>
+  void save_all_as(const std::string &name, const Hists &...hists);
 }
 
 #include "Histogram.cc"
