@@ -8,9 +8,6 @@
 #include <numeric>
 #include <cmath>
 #include "TLorentzVector.h"
-#include "boost/math/constants/constants.hpp"
-
-namespace constants = boost::math::constants;
 
 /// poor man's std::hypot (tested with g++/clang++, fine for double: 1e-158 < i < 1e10)
 template <typename Number = float>

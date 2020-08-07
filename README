@@ -5,7 +5,7 @@ requirements
 - ROOT: no explicit requirement, but development and testing are done with ROOT 6.18.04
 - for CMS members, the environment provided by CMSSW_11_0_X and newer fulfills the requirements
 - the framework itself is independent of CMSSW however
-- headers in plugins may introduce additional dependencies e.g. boost::math::constants
+- headers in plugins may introduce additional dependencies
 
 quickstart
 - check the exec/example_gen_ttbar.cc annotated example file
