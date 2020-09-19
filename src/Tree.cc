@@ -32,30 +32,40 @@ bool Framework::Tree::make_single_branches(Group &group, Attributes &&...attrs)
   for (int iB = 0; iB < v_attr.size(); ++iB) {
     std::visit(overload {
         // lolk apparently both "::" and "--" are invalid in branch names
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<int> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<int> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/I").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<uint> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<uint> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/i").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<float> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<float> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/F").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<double> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<double> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/D").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<long> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<long> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/L").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<ulong> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<ulong> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/l").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<boolean> &vec) mutable
-          {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/O").c_str());}
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<boolean> &vec)
+          {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/O").c_str());},
+
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<char> &vec)
+          {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/B").c_str());},
+
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB]] (std::vector<unsigned char> &vec)
+          {branch = ptr->Branch((name + "_" + attr).c_str(), &vec[0], (name + "_" + attr + "/b").c_str());},
+
+        [] (auto &vec)
+          { static_assert(always_false_v<decltype(vec)>, "ERROR: Tree::make_single_branches: unsupported type encountered!!"
+                          " If it should have been supported, please add it and/or contact the developer."); }
       }, group.mref_to_attribute(v_attr[iB]));
   }
 
-  std::get<1>(v_branch.back()) = std::function<void()>([&group] () mutable { group.reorder(); });
+  std::get<1>(v_branch.back()) = std::function<void()>([&group] () { group.reorder(); });
   return true;
 }
 
@@ -79,26 +89,36 @@ bool Framework::Tree::make_array_branches(Group &group, Attributes &&...attrs)
   std::array<std::string, sizeof...(attrs)> v_attr{ attrs... };
   for (int iB = 0; iB < v_attr.size(); ++iB) {
     std::visit(overload {
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<int> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<int> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/I").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<uint> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<uint> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/i").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<float> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<float> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/F").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<double> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<double> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/D").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<long> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<long> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/L").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<ulong> &vec) mutable
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<ulong> &vec)
           {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/l").c_str());},
 
-        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<boolean> &vec) mutable
-          {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/O").c_str());}
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<boolean> &vec)
+          {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/O").c_str());},
+
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<char> &vec)
+          {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/B").c_str());},
+
+        [&ptr = ptr, &attr = v_attr[iB], &name = group.name, &branch = std::get<2>(v_branch.back())[iB + 1]] (std::vector<unsigned char> &vec)
+          {branch = ptr->Branch((name + "_" + attr).c_str(), vec.data(), (name + "_" + attr + "[n_"+ name + "]/b").c_str());},
+
+        [] (auto &vec)
+          { static_assert(always_false_v<decltype(vec)>, "ERROR: Tree::make_array_branches: unsupported type encountered!!"
+                          " If it should have been supported, please add it and/or contact the developer."); }
       }, group.mref_to_attribute(v_attr[iB]));
   }
 
