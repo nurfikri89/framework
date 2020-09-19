@@ -546,9 +546,8 @@ int main() {
   // by this point you can probably guess that this is achieved by defining an impure function
   // that captures the references to all the collections, aggregates and histograms we defined above
   // the only argument to this function is the entry number
-  // the function must be marked mutable, since we will be modifying the captured references
   // one way to think about this function is that it contains the instructions on how to analyze a single event
-  auto f_analyze = [&metadata, &gen_particle, &gen_ttbar, &gen_tt_ll_bb, &hist_no_cut, &hist_cut, &tree_gen] (long long entry) mutable {
+  auto f_analyze = [&metadata, &gen_particle, &gen_ttbar, &gen_tt_ll_bb, &hist_no_cut, &hist_cut, &tree_gen] (long long entry) {
     // first we start by populating the collections
     // this is essentially equivalent of the tree->GetEntry(entry)
     // with the (compulsory) freedom of timing the call separately for each group

@@ -76,7 +76,7 @@ constexpr bool mutual_overlap<T<Ts...>, U<Us...>>
 // credit https://en.cppreference.com/w/cpp/utility/variant/visit
 template<typename ...Ts> struct overload : Ts... { using Ts::operator()...; };
 template<typename ...Ts> overload(Ts...) -> overload<Ts...>;
-
+template <typename> inline constexpr bool always_false_v = false;
 
 
 // credit https://stackoverflow.com/questions/7943525/is-it-possible-to-figure-out-the-parameter-type-and-return-type-of-a-lambda

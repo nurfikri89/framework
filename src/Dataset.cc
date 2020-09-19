@@ -93,6 +93,14 @@ bool Framework::Dataset<Tree>::add_file(const std::string &file)
 
 
 template <typename Tree>
+int Framework::Dataset<Tree>::n_files()
+{
+  return v_file.size();
+}
+
+
+
+template <typename Tree>
 bool Framework::Dataset<Tree>::add_weight(const std::string &wgt_name, double wgt)
 {
   auto iW = std::find_if(std::begin(v_weight), std::end(v_weight), [&wgt_name] (const auto &weight) {return weight.first == wgt_name;});
