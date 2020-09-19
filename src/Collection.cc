@@ -16,7 +16,7 @@ counter_branch(nullptr)
 
 
 template <typename ...Ts>
-Framework::Collection<Ts...>::Collection(const std::string &name_, const std::string &counter_name_, int reserve_, int init) : 
+Framework::Collection<Ts...>::Collection(const std::string &name_, const std::string &counter_name_, int reserve_, int init /*= 4*/) : 
 Framework::Group<Ts...>::Group(name_, 1),
 tree(nullptr),
 counter_name(counter_name_),

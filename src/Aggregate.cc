@@ -55,7 +55,7 @@ template <int N, typename ...Ts>
 template <typename Function, typename ...Attributes>
 bool Framework::Aggregate<N, Ts...>::add_attribute(const std::string &attr, Function function, Attributes &&...attrs)
 {
-  static_assert(sizeof...(attrs) > 0, "ERROR: Aggregate::add_attribute: Aggregate attribute must be made out of at least one underlying attributes!!");
+  static_assert(sizeof...(attrs) > 0, "ERROR: Aggregate::add_attribute: Aggregate attribute must be made out of at least one underlying attribute!!");
 
   using Traits = function_traits<decltype(function)>;
   static_assert(contained_in<typename Traits::result_type, Ts...>, 
